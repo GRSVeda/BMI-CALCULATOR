@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BMI</title>
+</head>
+<style>
+    html,body{
+        background-image: linear-gradient(to top, #8c5da3, rgb(216, 166, 216));
+        height: 100%;
+    margin: 0;
+    padding: 0;
+    background-image: linear-gradient(to bottom, rgb(169, 83, 168), rgb(239, 166, 239));
+    background-repeat: no-repeat;
+    background-size: cover;
+
+        background-size: cover;
+    }
+    h1{
+text-align:center;
+text-decoration:dotted underline;
+text-decoration-color:#4a0b7b;
+color:#ffffff;
+margin-top:40px;
+}
+.slider{
+width:100%;
+text-align:center;
+flex-wrap:wrap;
+font-size: medium;
+}
+.box{
+width:90%;
+max-width:500px;
+background:rgba(199, 7, 238, 0.1);
+backdrop-filter:blur(8px);
+padding:30px;
+margin:40px auto;
+border-radius:16px;
+box-shadow:0 4px 20px rgba(0,0,0,0.3);
+color:#fff;
+}
+input[type=number]{
+width:20%;
+padding:10px;
+margin:10px 0;
+border:none;
+border-radius:6px;
+font-size:15px;
+}
+button{
+padding:10px 20px;
+border:none;
+border-radius:8px;
+background-color:#8a2be2;
+color:#fff;
+font-size:16px;
+cursor:pointer;
+transition:background-color 0.3s ease;
+flex-wrap: wrap;
+text-align: center;
+display:block;
+margin:20px auto 0;
+padding:10px 20px;
+border:none;
+border-radius:8px;
+background-color:#8a2be2;
+color:#fff;
+font-size:16px;
+cursor:pointer;
+transition:background-color 0.3s ease;
+}
+button:hover{
+background-color:#a463f2;
+}
+h5{
+margin:10px 0 5px;
+}
+#result{
+text-align:center;
+margin-top:20px;
+font-size:18px;
+font-weight:bold;
+color:#f0f8ff;
+
+}
+</style>
+<body>
+    <h1 style="color: rgb(250, 252, 252);">BMI CALCULATOR</h1>
+    <div  class="box">
+    <div class="slider">
+        <h5>Enter Your Weight:</h5>
+        <input type="number" id="weight" value="weight" min="5" max="250">
+        <h5>Enter your height in Centimeters:</h5>
+        <input type="number" id="height" value="height" min="90" max="200">
+    </div>
+
+        <button onclick="bmi()">Calculate BMI</button>
+        <h4 id="result"></h4>
+    
+    </div>
+    
+    <script>
+        function bmi()
+        {
+            var weight = document.getElementById("weight").value;
+            var height=document.getElementById("height").value/100;
+            if (isNaN(weight) || isNaN(height) || height <= 0) {
+            document.getElementById("result").innerText = "Please enter valid weight and height.";
+        return;
+      }
+
+        const bmi = weight / (height * height);
+        let category = "";
+
+        if (bmi < 18.5) {
+            category = "Underweight";
+        } else if (bmi < 24.9) {
+            category = "Normal weight";
+        } else if (bmi < 29.9) {
+            category = "Overweight";
+        } else {
+            category = "Obesity";
+        }
+        document.getElementById("result").innerText = `Your BMI is ${bmi.toFixed(2)} (${category})`;
+        }
+
+        
+    </script>
+    
+</body>
+</html>
